@@ -23,8 +23,8 @@ public class EmailServices {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-//	@Autowired
-//	private SpringTemplateEngine springTemplateEngine;
+	@Autowired
+	private SpringTemplateEngine springTemplateEngine;
 	
 	public void emailSender(ReportDTO reportDTO) throws MessagingException {
 		MimeMessage mail = mailSender.createMimeMessage();
@@ -32,12 +32,15 @@ public class EmailServices {
 		
 		Context context = new Context();
 		Map<String, Object> modelHTML = new HashMap<>();
+		modelHTML.put("pirateReport", reportDTO);
+		context.setVariables(modelHTML);
+		String html = springTemplateEngine.process("index", context);
 		
 		
 		helper.setTo(InternetAddress.parse(""));
 		helper.setFrom("Email Bot");
 		helper.setSubject("This is a test");
-		helper.setText("", true);
+		helper.setText(html, true);
 		
 		mailSender.send(mail);
 	}

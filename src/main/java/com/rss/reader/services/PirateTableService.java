@@ -13,10 +13,9 @@ import com.rss.reader.models.ReportDTO;
 @Service
 public class PirateTableService {
 	
-	@Autowired
-	private ReportDTO reportDTO;
 	
 	public ReportDTO generatePirateTable() {
+		ReportDTO reportDTO = new ReportDTO();
 		List <PirateCrew> pirateCrewList = new ArrayList<PirateCrew>();
 		List <DevilFruit> devilFruitList = new ArrayList<DevilFruit>();
 		

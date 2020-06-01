@@ -21,25 +21,25 @@ public class AutomatedServices {
 	@Value("${scheduled.email.interval}")
 	private String emailTimeInterval;
 	
-	@Scheduled(cron="*/10 * * * * *")
+	//@Scheduled(cron="*/10 * * * * *")
 	private void automatedEmailer() {
 		System.out.println("Test");
 	}
 	
-	@Scheduled(fixedDelay = 1000)
+	//@Scheduled(fixedDelay = 1000)
 	public void scheduleFixedDelayTask() {
 	    System.out.println(
 	      "Fixed delay task - " + System.currentTimeMillis() / 1000);
 	}
 	
-	@Scheduled(cron="${scheduled.email.interval}")
-	public void generateAndSendEmail() {
-		
-		try {
-			emailService.emailSender(pirateTableService.generatePirateTable());
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Scheduled(cron="${scheduled.email.interval}")
+//	public void generateAndSendEmail() {
+//		
+//		try {
+//			emailService.emailSender(pirateTableService.generatePirateTable());
+//		} catch (MessagingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }
