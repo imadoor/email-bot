@@ -1,6 +1,8 @@
 package com.rss.reader.services;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -10,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
+
+import com.rss.reader.models.ReportDTO;
 
 @Service
 public class EmailServices {
@@ -21,9 +26,13 @@ public class EmailServices {
 //	@Autowired
 //	private SpringTemplateEngine springTemplateEngine;
 	
-	public void emailSender() throws MessagingException {
+	public void emailSender(ReportDTO reportDTO) throws MessagingException {
 		MimeMessage mail = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mail, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+		
+		Context context = new Context();
+		Map<String, Object> modelHTML = new HashMap<>();
+		
 		
 		helper.setTo(InternetAddress.parse(""));
 		helper.setFrom("Email Bot");
