@@ -38,5 +38,6 @@ public class PirateTableService {
 		reportDTO.setPirateCrewList(pirateCrewList);
 		
 		return reportDTO;
+	
 	}
 }

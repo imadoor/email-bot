@@ -11,22 +11,42 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div th:if="${not #lists.isEmpty(pirateDTO.getPirateCrewList())}">
-		<h1>TEST</h1>
-	</div>
+
 	<div th:if="${not #lists.isEmpty(pirateDTO.getPirateCrewList())}">
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th colspan="3">Pirate Crews</th>
-					
+					<th colspan="3" style="text-align: center">Pirate Crews</th>
+
+				</tr>
+			</thead>
+			<tbody th:each="row: ${pirateDTO.getPirateCrewList()}" >
+				<tr id="tablerow">
+					<td th:text="${row.getCaptainName()}" />
+					<td th:text="${row.getFirstMateName()}" />
+					</tr>
+					<tr>
+						<td th:text="${row.getNavigator()}" />
+					</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${not #lists.isEmpty(pirateDTO.getDevilFruitList())}">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th colspan="3" style="text-align: center">Devil Fruits</th>
+
 				</tr>
 			</thead>
 			<tbody>
-				<tr >
-					<td>July</td>
-					<td>Dooley</td>
-					<td>july@example.com</td>
+				<tr th:each="row: ${pirateDTO.getDevilFruitList()}" id="tablerow">
+
+					<td th:text="${row.getDevilFruitName()}" />
+					<td th:text="${row.getDevilFruitAbility()}" />
+
+
 				</tr>
 			</tbody>
 		</table>

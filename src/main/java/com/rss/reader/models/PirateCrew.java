@@ -17,4 +17,5 @@ public class PirateCrew {
 
 	public String navigator;
 	
+
 }

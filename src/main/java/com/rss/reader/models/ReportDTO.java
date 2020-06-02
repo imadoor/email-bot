@@ -16,6 +16,6 @@ public class ReportDTO {
 	private List<PirateCrew> pirateCrewList;
 	
 	private List<DevilFruit> devilFruitList;
-	
+	 
 	
 }

@@ -15,4 +15,5 @@ public class DevilFruit {
 	
 	private String devilFruitAbility;
 	
+	
 }
